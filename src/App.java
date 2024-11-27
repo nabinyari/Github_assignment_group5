@@ -1,17 +1,27 @@
 public class App {
     public static void main(String[] args) throws Exception {
-        Car c1 = new Car(); // Creating the object c1
-        c1.brand ="Toyota";
-        c1.model = 5069;
-        c1.amountOfFuel = 10;
-        c1.printData();  // calling printData method
-        c1.brake();      // calling brake method
-        c1.accelerate(); // calling accelerate method
-        c1.printData();  // calling printData method
-        c1.refule(5);  // calling refule method
+        //Car c1 = new Car(); // Creating the object c1
+        //c1.brand ="Toyota";
+        //c1.model = 5069;
+        //c1.amountOfFuel = 10;
+        //c1.printData();  // calling printData method
+        //c1.brake();      // calling brake method
+        //c1.accelerate(); // calling accelerate method
+        //c1.printData();  // calling printData method
+        //c1.refule(5);  // calling refule method
 
-        Car c2 = new Car("Audi", 329, 5, 5000);    // Creating the another object c2 and passing the arguments
-        c2.accelerate(); 
+       // Car c2 = new Car("Audi", 329, 5, 5000);    // Creating the another object c2 and passing the arguments
+        //c2.accelerate(); 
+
+        Bus b1 = new Bus();
+        b1.brand = "TVTV";
+        b1.model = 764;
+        b1.amountOfFuel = 15;
+        b1.price = 1200;
+        b1.accelerate();
+        b1.brake();
+        b1.printData();
+
     }
 }
 
@@ -71,5 +81,27 @@ class Car{
         System.out.println("Refule :" + refule);
         System.out.println("Fuel on the tank after the refule: " + (amountOfFuel+ refule));
     }
-    
 } 
+
+class Bus extends Car
+{
+    public void printData()
+    {
+        System.out.println("Bus brand = "+this.brand);
+        System.out.println("Bus model = "+this.model);
+        System.out.println("Bus amount of fuel = "+this.amountOfFuel);
+        System.out.println("Bus price = " + this.price);
+    }
+    public void brake()
+    {
+        System.out.println("Bus is breaking.");
+    }
+    public void accelerate()
+    {
+        if(amountOfFuel> 0)
+        {
+            System.out.println("Bus is accelerating.");
+            amountOfFuel = amountOfFuel - 1;
+        }
+    }
+}
