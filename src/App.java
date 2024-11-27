@@ -10,9 +10,8 @@ public class App {
         c1.printData();  // calling printData method
         c1.refule(5);  // calling refule method
 
-        Car c2 = new Car("Audi", 329, 5);    // Creating the another object c2 and passing the arguments
+        Car c2 = new Car("Audi", 329, 5, 5000);    // Creating the another object c2 and passing the arguments
         c2.accelerate(); 
-        c2.printData();
     }
 }
 
@@ -22,22 +21,26 @@ class Car{
     String brand;
     int model;
     int amountOfFuel;
+    int price;
     // creating a parameterless constructor
     Car()
     {
         this.brand = null;
         this.amountOfFuel =0;
         this.model =0;
+        this.price = 0;
     }
     // creating a paramatarized constructor
-    Car(String brands, int models, int amountOfFuels)
+    Car(String brands, int models, int amountOfFuels, int p)
     {
         this.brand = brands;
         this.model = models;
         this.amountOfFuel = amountOfFuels;
+        this.price = p;
         System.out.println("Car brand = "+this.brand);
         System.out.println("Car model = "+this.model);
         System.out.println("Car amount of fuel = "+this.amountOfFuel);
+        System.out.println("Car price = " + this.price);
     }
     // creating a printData method which print the data
     public void printData()
@@ -45,6 +48,7 @@ class Car{
         System.out.println("Car brand = "+this.brand);
         System.out.println("Car model = "+this.model);
         System.out.println("Car amount of fuel = "+this.amountOfFuel);
+        System.out.println("Car price = " + this.price);
     }
     //creating a brake method
     public void brake()
