@@ -21,18 +21,18 @@ public class App {
         b1.model = 764;
         b1.amountOfFuel = 15;
         b1.price = 1200; */
-        UserInput User = new UserInput();
-        Bus b1 = new Bus();
-        System.out.print("B for class 'Bus' and C for class 'Car': ");
+        UserInput User = new UserInput();  // creating User object 
+        Bus b1 = new Bus(); // creating object bus
+        System.out.print("B for class 'Bus' and C for class 'Car': ");  // asking with user what class he/she want's to use
         String value = scr.nextLine().toLowerCase();
 
 
-        String w = User.askBrand();
+        String w = User.askBrand();  
         String x = User.askModel();
         int y = User.askFuel();
         int z = User.askPrice();
 
-        if(value.equals("b"))
+        if(value.equals("b"))   // if user select bus class
         {
             b1.brand = w;
             b1.model =x;
@@ -43,7 +43,7 @@ public class App {
             b1.brake();
             b1.printData();   
         }
-        else if(value.equals("c"))
+        else if(value.equals("c")) // if user select car class
         {
             Car c1 = new Car(w, x, y, z);
             c1.accelerate();
@@ -55,7 +55,7 @@ public class App {
     }
 }
 
-interface Permision
+interface Permision  // creating interface called permision
 {
     void brake();
     void accelerate();
@@ -143,26 +143,26 @@ class Bus extends Car
 class UserInput
 {
     Scanner scr = new Scanner(System.in);
-    public String askBrand()
+    public String askBrand()  // asking brand name to user
     {
         System.out.print("Enter the brand name    :");
         String brand = scr.nextLine();
         return brand;
     }
-    public String askModel()
+    public String askModel()  // asking model to user
     {
         System.out.print("Enter the model name    :");
         String model = scr.nextLine();
         return model;
     }
-    public int askFuel()
+    public int askFuel()  // asking amount of fuel with user
     {
         System.out.print("Enter the amount of fuel:");
         String a = scr.nextLine();
         int fuel = Integer.parseInt(a);
         return fuel;
     }
-    public int askPrice()
+    public int askPrice()   // asking price with user
     {
         System.out.print("Enter the price         :");
         String p = scr.nextLine();
