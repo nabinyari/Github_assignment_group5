@@ -1,3 +1,4 @@
+import java.util.Scanner;
 public class App {
     public static void main(String[] args) throws Exception {
         //Car c1 = new Car(); // Creating the object c1
@@ -25,8 +26,15 @@ public class App {
     }
 }
 
+interface Permision
+{
+    void brake();
+    void accelerate();
+    void printData();
+}
+
 // creating the class car
-class Car{
+class Car implements Permision{
     // passing some attributes in car class
     String brand;
     int model;
@@ -104,4 +112,37 @@ class Bus extends Car
             amountOfFuel = amountOfFuel - 1;
         }
     }
+}
+
+
+class UserInput
+{
+    Scanner scr = new Scanner(System.in);
+    public String askBrand()
+    {
+        System.out.print("Enter the brand name  :");
+        String brand = scr.nextLine();
+        return brand;
+    }
+    public String askModel()
+    {
+        System.out.print("Enter the model name   :");
+        String model = scr.nextLine();
+        return model;
+    }
+    public int askFuel()
+    {
+        System.out.print("Enter the amount of fuel:");
+        String a = scr.nextLine();
+        int fuel = Integer.parseInt(a);
+        return fuel;
+    }
+    public int askPrice()
+    {
+        System.out.print("Enter the price        :");
+        String p = scr.nextLine();
+        int price = Integer.parseInt(p);
+        return price;
+    }
+    
 }
