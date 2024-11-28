@@ -31,6 +31,7 @@ public class App {
         String x = User.askModel();
         int y = User.askFuel();
         int z = User.askPrice();
+        String m = User.askEngine();
 
         if(value.equals("b"))   // if user select bus class
         {
@@ -38,17 +39,20 @@ public class App {
             b1.model =x;
             b1.amountOfFuel =y;
             b1.price = z;
+            b1.Enginetype = m;
 
             b1.accelerate();
             b1.brake();
-            b1.printData();   
+            b1.printData();
+            b1.mobil();   
         }
         else if(value.equals("c")) // if user select car class
         {
-            Car c1 = new Car(w, x, y, z);
+            Car c1 = new Car(w, x, y, z ,m);
             c1.accelerate();
             c1.brake();
             c1.printData(); 
+            c1.mobil();
         }
 
 
@@ -60,6 +64,7 @@ interface Permision  // creating interface called permision
     void brake();
     void accelerate();
     void printData();
+    void mobil();
 }
 
 // creating the class car
@@ -67,6 +72,7 @@ class Car implements Permision{
     // passing some attributes in car class
     String brand;
     String model;
+    String Enginetype;
     int amountOfFuel;
     int price;
     // creating a parameterless constructor
@@ -76,14 +82,16 @@ class Car implements Permision{
         this.amountOfFuel =0;
         this.model = null;
         this.price = 0;
+        this.Enginetype=null;
     }
     // creating a paramatarized constructor
-    Car(String brands, String models, int amountOfFuels, int p)
+    Car(String brands, String models, int amountOfFuels, int p, String types)
     {
         this.brand = brands;
         this.model = models;
         this.amountOfFuel = amountOfFuels;
         this.price = p;
+        this.Enginetype =types;
     }
     // creating a printData method which print the data
     public void printData()
@@ -92,6 +100,7 @@ class Car implements Permision{
         System.out.println("Car model = "+this.model);
         System.out.println("Car amount of fuel = "+this.amountOfFuel);
         System.out.println("Car price = " + this.price);
+        System.out.println("Enginetype ="+this.Enginetype);
     }
     //creating a brake method
     public void brake()
@@ -114,6 +123,10 @@ class Car implements Permision{
         System.out.println("Refule :" + refule);
         System.out.println("Fuel on the tank after the refule: " + (amountOfFuel+ refule));
     }
+    public void mobil()  //creating method mobil
+    {
+        System.out.println("Car need service.");
+    }
 } 
 
 class Bus extends Car
@@ -124,6 +137,7 @@ class Bus extends Car
         System.out.println("Bus model = "+this.model);
         System.out.println("Bus amount of fuel = "+this.amountOfFuel);
         System.out.println("Bus price = " + this.price);
+        System.out.println("Enginetype ="+this.Enginetype);
     }
     public void brake()
     {
@@ -136,6 +150,10 @@ class Bus extends Car
             System.out.println("Bus is accelerating.");
             amountOfFuel = amountOfFuel - 1;
         }
+    }
+    public void mobil()
+    {
+        System.out.println("Bus need service.");
     }
 }
 
@@ -168,6 +186,12 @@ class UserInput
         String p = scr.nextLine();
         int price = Integer.parseInt(p);
         return price;
+    }
+    public String askEngine()   // asking price with user
+    {
+        System.out.print("Enter the engine type   :");
+        String engine = scr.nextLine();
+        return engine;
     }
     
 }
