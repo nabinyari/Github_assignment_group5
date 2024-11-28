@@ -1,6 +1,7 @@
 import java.util.Scanner;
 public class App {
     public static void main(String[] args) throws Exception {
+        Scanner scr = new Scanner(System.in);
         //Car c1 = new Car(); // Creating the object c1
         //c1.brand ="Toyota";
         //c1.model = 5069;
@@ -14,14 +15,42 @@ public class App {
        // Car c2 = new Car("Audi", 329, 5, 5000);    // Creating the another object c2 and passing the arguments
         //c2.accelerate(); 
 
-        Bus b1 = new Bus();
+
+/*         Bus b1 = new Bus();
         b1.brand = "TVTV";
         b1.model = 764;
         b1.amountOfFuel = 15;
-        b1.price = 1200;
-        b1.accelerate();
-        b1.brake();
-        b1.printData();
+        b1.price = 1200; */
+        UserInput User = new UserInput();
+        Bus b1 = new Bus();
+        System.out.print("B for class 'Bus' and C for class 'Car': ");
+        String value = scr.nextLine().toLowerCase();
+
+
+        String w = User.askBrand();
+        String x = User.askModel();
+        int y = User.askFuel();
+        int z = User.askPrice();
+
+        if(value.equals("b"))
+        {
+            b1.brand = w;
+            b1.model =x;
+            b1.amountOfFuel =y;
+            b1.price = z;
+
+            b1.accelerate();
+            b1.brake();
+            b1.printData();   
+        }
+        else if(value.equals("c"))
+        {
+            Car c1 = new Car(w, x, y, z);
+            c1.accelerate();
+            c1.brake();
+            c1.printData(); 
+        }
+
 
     }
 }
@@ -37,7 +66,7 @@ interface Permision
 class Car implements Permision{
     // passing some attributes in car class
     String brand;
-    int model;
+    String model;
     int amountOfFuel;
     int price;
     // creating a parameterless constructor
@@ -45,20 +74,16 @@ class Car implements Permision{
     {
         this.brand = null;
         this.amountOfFuel =0;
-        this.model =0;
+        this.model = null;
         this.price = 0;
     }
     // creating a paramatarized constructor
-    Car(String brands, int models, int amountOfFuels, int p)
+    Car(String brands, String models, int amountOfFuels, int p)
     {
         this.brand = brands;
         this.model = models;
         this.amountOfFuel = amountOfFuels;
         this.price = p;
-        System.out.println("Car brand = "+this.brand);
-        System.out.println("Car model = "+this.model);
-        System.out.println("Car amount of fuel = "+this.amountOfFuel);
-        System.out.println("Car price = " + this.price);
     }
     // creating a printData method which print the data
     public void printData()
@@ -120,13 +145,13 @@ class UserInput
     Scanner scr = new Scanner(System.in);
     public String askBrand()
     {
-        System.out.print("Enter the brand name  :");
+        System.out.print("Enter the brand name    :");
         String brand = scr.nextLine();
         return brand;
     }
     public String askModel()
     {
-        System.out.print("Enter the model name   :");
+        System.out.print("Enter the model name    :");
         String model = scr.nextLine();
         return model;
     }
@@ -139,7 +164,7 @@ class UserInput
     }
     public int askPrice()
     {
-        System.out.print("Enter the price        :");
+        System.out.print("Enter the price         :");
         String p = scr.nextLine();
         int price = Integer.parseInt(p);
         return price;
